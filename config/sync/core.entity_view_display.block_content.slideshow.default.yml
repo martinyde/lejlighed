@@ -1,0 +1,22 @@
+uuid: ba74ceec-2d73-4532-b6da-b9a2ae1fca5c
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.slideshow
+    - field.field.block_content.slideshow.body
+  module:
+    - text
+id: block_content.slideshow.default
+targetEntityType: block_content
+bundle: slideshow
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

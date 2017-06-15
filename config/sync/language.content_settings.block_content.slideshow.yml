@@ -1,0 +1,16 @@
+uuid: 719890ba-06f6-44f6-a207-c55d09b2872c
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.slideshow
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.slideshow
+target_entity_type_id: block_content
+target_bundle: slideshow
+default_langcode: site_default
+language_alterable: true

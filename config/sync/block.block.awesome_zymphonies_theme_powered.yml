@@ -1,0 +1,22 @@
+uuid: d0620d62-a94d-416f-a7bf-971df8ada314
+langcode: da
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - awesome_zymphonies_theme
+_core:
+  default_config_hash: BVecvhKQplth2YHOQHYmNLiRkhujORAlZBHQR9h7CBo
+id: awesome_zymphonies_theme_powered
+theme: awesome_zymphonies_theme
+region: auto_hidden_block
+weight: -6
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

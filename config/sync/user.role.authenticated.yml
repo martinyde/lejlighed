@@ -1,0 +1,13 @@
+uuid: 3e23ae4e-78e4-4135-be60-837cdd95d133
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'use text format html'

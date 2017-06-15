@@ -1,0 +1,17 @@
+uuid: 819a3b5e-f68b-44a6-acdf-1298e2277550
+langcode: da
+status: true
+dependencies: {  }
+name: Html
+format: html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type=''1 A I''> <li> <dl> <dt> <dd> <h2 id=''jump-*''> <h3 id> <h4 id> <h5 id> <h6 id>'
+      filter_html_help: true
+      filter_html_nofollow: false

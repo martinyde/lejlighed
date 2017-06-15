@@ -1,0 +1,22 @@
+uuid: 236e78cd-3f13-4781-860a-d8b4a483c90f
+langcode: da
+status: true
+dependencies:
+  config:
+    - block_content.type.slideshow
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.slideshow.body
+field_name: body
+entity_type: block_content
+bundle: slideshow
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

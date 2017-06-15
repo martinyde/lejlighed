@@ -1,0 +1,25 @@
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+  logo: true
+  name: true
+  node_user_picture: true
+  slogan: true
+facebook_url: ''
+twitter_url: ''
+google_plus_url: ''
+linkedin_url: ''
+pinterest_url: ''
+rss_url: ''
+show_social_icon: 0
+show_credit_link: 0
+_core:
+  default_config_hash: 6Q0XBm616t-1D-sOkuYOpim2ph0dBJzRtkxOl_gSpMs
+langcode: da
+logo:
+  use_default: 0
+  path: ''
+favicon:
+  use_default: 0
+  path: ''

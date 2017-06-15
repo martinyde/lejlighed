@@ -1,0 +1,18 @@
+uuid: eeed3ec9-4d83-40df-96df-3044e2fb91b1
+langcode: da
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Page
+type: page
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

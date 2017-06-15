@@ -1,0 +1,14 @@
+uuid: 46d1723f-1645-4fdb-9ba9-a8d840cf4548
+name: 'Ferielejlighed hos Ulla og Peter'
+mail: yde001@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+langcode: da
+default_langcode: da
+_core:
+  default_config_hash: AyT9s8OUcclfALRE_imByOMgtZ19eOlqdF6zI3p7yqo

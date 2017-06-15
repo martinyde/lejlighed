@@ -1,0 +1,25 @@
+uuid: 7077bdbd-9dc6-4751-aa8f-4d36a7525b90
+langcode: da
+status: true
+dependencies:
+  content:
+    - 'block_content:slideshow:eed56de9-a31f-4319-81a5-8c6dc7b61362'
+  module:
+    - block_content
+  theme:
+    - awesome_zymphonies_theme
+id: abc
+theme: awesome_zymphonies_theme
+region: slideshow
+weight: 0
+provider: null
+plugin: 'block_content:eed56de9-a31f-4319-81a5-8c6dc7b61362'
+settings:
+  id: 'block_content:eed56de9-a31f-4319-81a5-8c6dc7b61362'
+  label: abc
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

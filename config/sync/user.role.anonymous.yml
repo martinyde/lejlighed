@@ -1,0 +1,12 @@
+uuid: 5f410f32-514e-4dec-885e-1deaeff5f612
+langcode: da
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'

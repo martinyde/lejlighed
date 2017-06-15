@@ -1,0 +1,26 @@
+uuid: f8aceb97-518e-4bff-86d7-380c1a9c459e
+langcode: da
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - awesome_zymphonies_theme
+_core:
+  default_config_hash: MPiuo3bt6jul4mf2flhMIp-t98II7kjLt2VJJHYE1LI
+id: awesome_zymphonies_theme_main_menu
+theme: awesome_zymphonies_theme
+region: primary_menu
+weight: -6
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 2
+visibility: {  }

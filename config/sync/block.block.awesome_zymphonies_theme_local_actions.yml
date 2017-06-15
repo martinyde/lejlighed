@@ -1,0 +1,20 @@
+uuid: 6d12de5d-b88a-4184-a289-d03728c6e78a
+langcode: da
+status: true
+dependencies:
+  theme:
+    - awesome_zymphonies_theme
+_core:
+  default_config_hash: h213FUOJyn9MSKeJsVC55gdGQMCMp5u2dPalckqsN8U
+id: awesome_zymphonies_theme_local_actions
+theme: awesome_zymphonies_theme
+region: auto_hidden_block
+weight: -6
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }
