@@ -1,0 +1,16 @@
+pannellum:
+  css:
+    theme:
+      //cdn.pannellum.org/2.3/pannellum.css: {}
+  header: true
+  js:
+    //cdn.pannellum.org/2.3/pannellum.js: {type: external}
+
+pannellum_custom:
+  header: true
+  js:
+    js/pannellum.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - pannellum_integration/pannellum

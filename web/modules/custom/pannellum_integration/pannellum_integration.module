@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Add template for widget.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function pannellum_integration_theme($existing, $type, $theme, $path) {
+  return array(
+    'pannellum_block' => array(
+      'template' => 'pannellum-block',
+      'variables' => [],
+    ),
+  );
+}
