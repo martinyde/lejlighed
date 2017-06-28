@@ -1,0 +1,15 @@
+uuid: bd4c23a7-5cb1-4479-a60f-e09994e5d618
+langcode: da
+status: true
+dependencies: {  }
+id: image_uploader
+label: 'Image uploader'
+weight: 2
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access user profiles'
+  - 'change own username'
+  - 'create image content'
+  - 'delete own image content'
+  - 'edit own image content'

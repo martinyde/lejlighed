@@ -1,0 +1,14 @@
+uuid: 6e3f8559-786c-4bd0-a24d-472f1adb443e
+langcode: da
+status: true
+dependencies:
+  config:
+    - user.role.image_uploader
+  module:
+    - user
+id: user_add_role_action.image_uploader
+label: 'Add the Image uploader role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: image_uploader

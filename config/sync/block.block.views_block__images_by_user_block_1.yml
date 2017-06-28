@@ -1,0 +1,31 @@
+uuid: e3c10b22-370d-4361-b957-c4ade12f361b
+langcode: da
+status: true
+dependencies:
+  config:
+    - views.view.images_by_user
+  module:
+    - system
+    - views
+  theme:
+    - custom
+id: views_block__images_by_user_block_1
+theme: custom
+region: content
+weight: -5
+provider: null
+plugin: 'views_block:images_by_user-block_1'
+settings:
+  id: 'views_block:images_by_user-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/user/*'
+    negate: false
+    context_mapping: {  }
