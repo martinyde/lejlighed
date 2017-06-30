@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.booking.field_date
     - field.field.node.booking.field_internal_comment
+    - field.field.node.booking.field_time
     - node.type.booking
   module:
     - datetime_range
@@ -20,12 +20,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_date:
-    weight: 28
-    settings: {  }
-    third_party_settings: {  }
-    type: daterange_default
-    region: content
   field_internal_comment:
     weight: 27
     settings:
@@ -33,6 +27,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_time:
+    weight: 29
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
     region: content
   langcode:
     type: language_select

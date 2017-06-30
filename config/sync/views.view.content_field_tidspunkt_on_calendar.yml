@@ -1,15 +1,16 @@
-uuid: 6692e150-ef8d-4dda-b537-aeb1163a2a1d
+uuid: ad0746fe-0974-466a-b075-cbbd53d599b3
 langcode: en
 status: true
 dependencies:
   module:
     - calendar
+    - datetime
     - node
     - user
-id: content_changed_calendar
-label: 'Content Changed Calendar'
+id: content_field_tidspunkt_on_calendar
+label: 'Content Field Tidspunkt on Calendar'
 module: views
-description: 'A calendar view of the ''Changed'' field in the ''Content'' base table'
+description: 'A calendar view of the ''Tidspunkt'' field in the ''Content'' base table'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -86,8 +87,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ ''Optaget'' | t }}'
             make_link: false
             path: ''
             absolute: false
@@ -125,6 +126,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -136,25 +140,52 @@ display:
           separator: ', '
           field_api_classes: false
           entity_type: node
-          entity_field: title
+          entity_field: created
           plugin_id: field
       filters:
         status:
-          value: '1'
-          table: node_field_data
+          id: status
+          table: node_field_revision
           field: status
-          plugin_id: boolean
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           entity_type: node
           entity_field: status
-          id: status
-          expose:
-            operator: ''
-          group: 1
+          plugin_id: boolean
       sorts:
-        changed:
-          id: changed
-          table: node_field_data
-          field: changed
+        field_time_value:
+          id: field_time_value
+          table: node__field_time
+          field: field_time_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -163,9 +194,7 @@ display:
           expose:
             label: ''
           granularity: second
-          entity_type: node
-          entity_field: changed
-          plugin_id: date
+          plugin_id: datetime
       header: {  }
       footer: {  }
       empty: {  }
@@ -218,7 +247,7 @@ display:
               page: '#ffffff'
             taxonomy_field: ''
             calendar_colors_vocabulary: {  }
-      path: calendar-changed/day
+      path: calendar-field_time/day
       menu:
         type: tab
         title: Day
@@ -228,36 +257,11 @@ display:
         weight: 0
         context: '0'
         menu_name: main
-      header:
-        calendar_header_1:
-          id: calendar_header_1
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: 1
-          content: '{{ arguments.changed__fulldate }}'
-          pager_embed: 0
-          plugin_id: calendar_header
-        calendar_header:
-          id: calendar_header
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: 'Calendar Pager'
-          empty: true
-          tokenize: 1
-          content: ''
-          pager_embed: 1
-          plugin_id: calendar_header
       arguments:
-        changed__fulldate:
-          id: changed_fulldate
-          table: node_field_data
-          field: changed_fulldate
+        field_time_value_full_date:
+          id: field_time_value_full_date
+          table: node__field_time
+          field: field_time_value_full_date
           relationship: none
           group_type: group
           admin_label: ''
@@ -286,8 +290,32 @@ display:
             fail: 'not found'
           validate_options:
             replacement_format: 'l, F j, Y'
-          entity_type: node
-          plugin_id: date_fulldate
+          plugin_id: datetime_full_date
+      header:
+        calendar_header:
+          id: calendar_header
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: 1
+          content: '{{ arguments.field_time_value_full_date }}'
+          pager_embed: 0
+          plugin_id: calendar_header
+        calendar_header_1:
+          id: calendar_header_1
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: 'Calendar Pager'
+          empty: true
+          tokenize: 1
+          content: ''
+          pager_embed: 1
+          plugin_id: calendar_header
     cache_metadata:
       max-age: 0
       contexts:
@@ -304,7 +332,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: front
+      path: calendar-field_time/month
       display_description: ''
       menu:
         type: tab
@@ -320,36 +348,11 @@ display:
         title: Calendar
         description: ''
         weight: 0
-      header:
-        calendar_header_1:
-          id: calendar_header_1
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: 1
-          content: '{{ arguments.changed_year_month }}'
-          pager_embed: 0
-          plugin_id: calendar_header
-        calendar_header:
-          id: calendar_header
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: 'Calendar Pager'
-          empty: true
-          tokenize: 1
-          content: ''
-          pager_embed: 1
-          plugin_id: calendar_header
       arguments:
-        changed_year_month:
-          id: changed_year_month
-          table: node_field_data
-          field: changed_year_month
+        field_time_value_year_month:
+          id: field_time_value_year_month
+          table: node__field_time
+          field: field_time_value_year_month
           relationship: none
           group_type: group
           admin_label: ''
@@ -378,8 +381,32 @@ display:
             fail: 'not found'
           validate_options:
             replacement_format: 'F Y'
-          entity_type: node
-          plugin_id: date_year_month
+          plugin_id: datetime_year_month
+      header:
+        calendar_header:
+          id: calendar_header
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: 1
+          content: '{{ arguments.field_time_value_year_month }}'
+          pager_embed: 0
+          plugin_id: calendar_header
+        calendar_header_1:
+          id: calendar_header_1
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: 'Calendar Pager'
+          empty: true
+          tokenize: 1
+          content: ''
+          pager_embed: 1
+          plugin_id: calendar_header
       defaults:
         arguments: false
         header: false
@@ -430,7 +457,7 @@ display:
               page: '#ffffff'
             taxonomy_field: ''
             calendar_colors_vocabulary: {  }
-      path: calendar-changed/week
+      path: calendar-field_time/week
       menu:
         type: tab
         title: Week
@@ -440,36 +467,11 @@ display:
         weight: 0
         context: '0'
         menu_name: main
-      header:
-        calendar_header_1:
-          id: calendar_header_1
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: 1
-          content: 'Week of {{ arguments.changed_year_week }}'
-          pager_embed: 0
-          plugin_id: calendar_header
-        calendar_header:
-          id: calendar_header
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: 'Calendar Pager'
-          empty: true
-          tokenize: 1
-          content: ''
-          pager_embed: 1
-          plugin_id: calendar_header
       arguments:
-        changed_year_week:
-          id: changed_year_week
-          table: node_field_data
-          field: changed_year_week
+        field_time_value_year_week:
+          id: field_time_value_year_week
+          table: node__field_time
+          field: field_time_value_year_week
           relationship: none
           group_type: group
           admin_label: ''
@@ -498,8 +500,32 @@ display:
             fail: 'not found'
           validate_options:
             replacement_format: 'F j, Y'
-          entity_type: node
-          plugin_id: date_year_week
+          plugin_id: datetime_year_week
+      header:
+        calendar_header:
+          id: calendar_header
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: 1
+          content: 'Week of {{ arguments.field_time_value_year_week }}'
+          pager_embed: 0
+          plugin_id: calendar_header
+        calendar_header_1:
+          id: calendar_header_1
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: 'Calendar Pager'
+          empty: true
+          tokenize: 1
+          content: ''
+          pager_embed: 1
+          plugin_id: calendar_header
     cache_metadata:
       max-age: 0
       contexts:
@@ -547,36 +573,11 @@ display:
               page: '#ffffff'
             taxonomy_field: ''
             calendar_colors_vocabulary: {  }
-      header:
-        calendar_header_1:
-          id: calendar_header_1
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: 1
-          content: '{{ arguments.changed_year }}'
-          pager_embed: 0
-          plugin_id: calendar_header
-        calendar_header:
-          id: calendar_header
-          table: views
-          field: calendar_header
-          relationship: none
-          group_type: group
-          admin_label: 'Calendar Pager'
-          empty: true
-          tokenize: 1
-          content: ''
-          pager_embed: 1
-          plugin_id: calendar_header
       arguments:
-        changed_year:
-          id: changed_year
-          table: node_field_data
-          field: changed_year
+        field_time_value_year:
+          id: field_time_value_year
+          table: node__field_time
+          field: field_time_value_year
           relationship: none
           group_type: group
           admin_label: ''
@@ -605,9 +606,33 @@ display:
             fail: 'not found'
           validate_options:
             replacement_format: 'Y'
-          entity_type: node
-          plugin_id: date_year
-      path: calendar-changed/year
+          plugin_id: datetime_year
+      header:
+        calendar_header:
+          id: calendar_header
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: 1
+          content: '{{ arguments.field_time_value_year }}'
+          pager_embed: 0
+          plugin_id: calendar_header
+        calendar_header_1:
+          id: calendar_header_1
+          table: views
+          field: calendar_header
+          relationship: none
+          group_type: group
+          admin_label: 'Calendar Pager'
+          empty: true
+          tokenize: 1
+          content: ''
+          pager_embed: 1
+          plugin_id: calendar_header
+      path: calendar-field_time/year
       menu:
         type: tab
         title: Year

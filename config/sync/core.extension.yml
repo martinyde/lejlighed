@@ -30,6 +30,7 @@ module:
   system: 0
   text: 0
   toolbar: 0
+  update: 0
   user: 0
   views: 0
   views_templates: 0

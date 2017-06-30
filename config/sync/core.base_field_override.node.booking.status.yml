@@ -1,0 +1,22 @@
+uuid: 500f9ab4-4e3a-4671-b49b-153db6ada1ae
+langcode: da
+status: true
+dependencies:
+  config:
+    - node.type.booking
+id: node.booking.status
+field_name: status
+entity_type: node
+bundle: booking
+label: Publiceringsstatus
+description: 'A boolean indicating the published state.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Tilsluttet
+  off_label: Afbrudt
+field_type: boolean

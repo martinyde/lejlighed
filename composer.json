@@ -71,6 +71,14 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "patches": {
+            "drupal/core": {
+                "Calendar core fix": "https://www.drupal.org/files/issues/0001-Issue-2786577-Improve-the-Views-integration-for-Date_3.patch"
+            },
+            "drupal/calendar": {
+                "Undefined index fix": "https://www.drupal.org/files/issues/calendar-steps_towards_handling_end_dates-2699477-36.patch"
+            }
         }
     }
 }
