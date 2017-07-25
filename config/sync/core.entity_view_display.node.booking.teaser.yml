@@ -1,0 +1,19 @@
+uuid: 8313032f-9e8c-4c23-b2f0-61da9551f6c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.booking
+  module:
+    - user
+id: node.booking.teaser
+targetEntityType: node
+bundle: booking
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

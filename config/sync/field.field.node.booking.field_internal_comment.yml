@@ -1,0 +1,21 @@
+uuid: 8d75eb87-1b2e-43e2-8ca3-1b6ed5c8c151
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_internal_comment
+    - node.type.booking
+  module:
+    - text
+id: node.booking.field_internal_comment
+field_name: field_internal_comment
+entity_type: node
+bundle: booking
+label: 'Privat kommentar'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,39 @@
+uuid: b4f10009-26e4-4dad-a000-9c9920cc1a1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.booking.field_date
+    - field.field.node.booking.field_internal_comment
+    - node.type.booking
+  module:
+    - datetime_range
+    - text
+    - user
+id: node.booking.default
+targetEntityType: node
+bundle: booking
+mode: default
+content:
+  field_date:
+    weight: 103
+    label: above
+    settings:
+      separator: '-'
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_internal_comment:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

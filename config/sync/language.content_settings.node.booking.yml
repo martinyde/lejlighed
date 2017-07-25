@@ -1,0 +1,11 @@
+uuid: 28e81f57-b78d-47ef-b230-0fe974123bbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.booking
+id: node.booking
+target_entity_type_id: node
+target_bundle: booking
+default_langcode: site_default
+language_alterable: false
