@@ -31,6 +31,9 @@ display:
           label: Größe
         status:
           label: Status
+          settings:
+            format_custom_false: Temporär
+            format_custom_true: Dauerhaft
         created:
           label: 'Upload Datum'
         changed:

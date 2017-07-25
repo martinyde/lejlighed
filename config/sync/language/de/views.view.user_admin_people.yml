@@ -1,9 +1,25 @@
-label: Benutzer
-description: 'Menschen finden und verwalten, die mit Ihrer Website in Kontakt stehen.'
 display:
   default:
-    display_title: Master
     display_options:
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                value: '1'
+                title: Aktiv
+              2:
+                title: Gesperrt
+            label: Status
+        combine:
+          expose:
+            label: 'Name oder E-Mail-Adresse enthält'
+        roles_target_id:
+          expose:
+            label: Rolle
+        permission:
+          expose:
+            label: Berechtigung
       exposed_form:
         options:
           submit_button: Filter
@@ -28,6 +44,9 @@ display:
           label: Benutzername
         status:
           label: Status
+          settings:
+            format_custom_true: Aktiv
+            format_custom_false: Gesperrt
         roles_target_id:
           label: Rollen
         created:
@@ -38,30 +57,12 @@ display:
           label: Operationen
         mail:
           separator: ', '
-      filters:
-        combine:
-          expose:
-            label: 'Name oder E-Mail-Adresse enthält'
-        roles_target_id:
-          expose:
-            label: Rolle
-        permission:
-          expose:
-            label: Berechtigung
-        status:
-          group_info:
-            label: Status
-            group_items:
-              1:
-                title: Aktiv
-                value: '1'
-              2:
-                title: Gesperrt
       title: Benutzer
       empty:
         area_text_custom:
           content: 'Keine Personen verfügbar.'
       use_more_text: mehr
+    display_title: Master
   page_1:
     display_title: Seite
     display_options:
@@ -71,3 +72,5 @@ display:
       tab_options:
         title: Benutzer
         description: 'Verwalten von Benutzerkonten, Rollen und Zugriffsrechten.'
+label: Benutzer
+description: 'Menschen finden und verwalten, die mit Ihrer Website in Kontakt stehen.'
