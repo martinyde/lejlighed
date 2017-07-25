@@ -26,7 +26,8 @@
         "drupal/awesome_zymphonies_theme": "^1.0",
         "phpdocumentor/reflection-docblock": "^2.0",
         "drush/drush": "dev-master",
-        "drupal/bootstrap": "^3.5"
+        "drupal/bootstrap": "^3.5",
+        "drupal/calendar": "1.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",
