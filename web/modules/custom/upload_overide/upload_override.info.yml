@@ -1,0 +1,5 @@
+name: Upload override
+description: Allows upload file field to override an existing file with the same name
+package: Custom
+type: module
+core: 8.x

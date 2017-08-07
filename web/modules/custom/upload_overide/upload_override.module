@@ -1,0 +1,103 @@
+<?php
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_entity_presave().
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function upload_override_entity_presave(EntityInterface $entity){
+  if ($entity->bundle() == 'file') {
+    $uploaded_filename = $entity->getFilename(); # UPLOADED FILENAME
+
+    // If File is Uploaded then Stash the Entity for use later
+    if ($uploaded_filename){
+      // STASH THE UPLOADED ENTITY INTO A SESSION VARIABLE
+      $tempstore = \Drupal::service('user.private_tempstore')->get('upload_override_file_replace_fileupload');
+      $tempstore->set('file', $entity);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ */
+function upload_override_entity_update(EntityInterface $entity) {
+  if ($entity->bundle() == 'file') {
+    $tempstore = \Drupal::service('user.private_tempstore')->get('upload_override_file_replace_fileupload');
+    $file_stash = $tempstore->get('file'); # UPLOADED File Entity
+
+    if ($file_stash && $file_stash_entity = File::load($file_stash->id())) {
+      // Get the Uploaded File Name and the URI of the uploaded file
+      $file_filename = $file_stash_entity->getFilename(); # UPLOADED File Name
+      $file_old_uri = $file_stash_entity->getFileUri(); # UPLOADED File URI
+
+      // Build the new file path from the old path parts
+      $path_parts = pathinfo($file_old_uri);
+      $new_file_uri = $path_parts['dirname'] . '/' . $file_filename;
+
+      // Check to see if the name was changed during upload to avoid a collision on the filesystem
+      if ($file_old_uri != $new_file_uri) {
+        $overwrite = TRUE;
+
+        # Query all 'file' entities for the filename that was uploaded and stashed in filereplace_entity_presave
+        $query = Drupal::service('entity.query')
+          ->get('file')
+          ->condition('uri', $new_file_uri, '='); # URI of file we want to Overwrite
+        $file_query_ids = $query->execute(); # Execute the query
+
+        // LOOP Queried Entities that matched the URI of our Stashed Entity
+        foreach ($file_query_ids as $id) {
+          $query_entity = File::load($id);
+          $references = file_get_file_references($query_entity);
+
+          if ($references) {
+            // Loop the file's referencing entities
+            foreach ($references as $field_name => $field_references) {
+              foreach ($field_references as $entity_type => $type_references) {
+                foreach ($type_references as $id => $reference) {
+
+                  // IF THIS FILE IS REFERENCED BY AN ENTITY OTHER THAN THE ONE WE ARE EDITING - DON'T OVERWRITE
+                  if ($id != $entity->id()) {
+                    $node = Node::load($id);
+                    $url = $node->toUrl()->toString();
+                    $path = file_url_transform_relative(file_create_url($file_old_uri));
+                    $overwrite = FALSE;
+                    drupal_set_message(t('File could not be overwritten because the filename is in use on @node_title. New version uploaded instead at %filepath.', ['@node_link' => $url, '@node_title' => $node->getTitle(), '%filepath' => $path]));
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // Overwrite the File
+        if ($overwrite) {
+
+          // OVERWRITE THE FILE AND UPDATE/SAVE THE ENTITY
+          file_unmanaged_copy($file_old_uri, $new_file_uri, FILE_EXISTS_REPLACE);
+          $file_stash_entity->setFileUri($new_file_uri); # Set the new Entity URI
+          $file_stash_entity->save(); # Saves the Entity
+          drupal_set_message(t('Original file %file overwritten with new one.', ['%file' => $file_stash_entity->getFilename()]));
+
+          // CLEANUP TEMPORARY FILES THAT WERE RETURNED IN THE QUERY ABOVE
+          foreach ($file_query_ids as $id) {
+            $query_entity = File::load($id);
+
+            // REVERT THE URI AND DELETE THE FILE
+            if (!$query_entity->get('status')->value) { // If status is temporary
+              $query_entity->setFileUri($file_old_uri); // set the old entity fileURI to the temp URI
+              $query_entity->save(); // save the updated URI
+              $query_entity->delete(); // delete the temporary files
+            }
+          }
+        }
+      }
+
+      // DESTROY THE ENTITY STASH
+      $tempstore->delete('file');
+    }
+  }
+}
