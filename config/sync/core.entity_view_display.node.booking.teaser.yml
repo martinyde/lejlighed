@@ -16,4 +16,6 @@ content:
     weight: 100
     region: content
 hidden:
+  field_internal_comment: true
+  field_time: true
   langcode: true
