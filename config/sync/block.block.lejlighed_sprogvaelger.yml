@@ -1,0 +1,20 @@
+uuid: 245bb50a-189e-43a6-a285-ca0442a2182e
+langcode: da
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - lejlighed
+id: lejlighed_sprogvaelger
+theme: lejlighed
+region: subheader
+weight: -2
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: Sprogvælger
+  provider: language
+  label_display: '0'
+visibility: {  }

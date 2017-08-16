@@ -1,0 +1,20 @@
+uuid: 71f93f1f-35a7-4956-a80f-1dfd93eb46e2
+langcode: da
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - stark
+id: stark_sprogvaelger
+theme: stark
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: Sprogvælger
+  provider: language
+  label_display: '0'
+visibility: {  }

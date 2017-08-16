@@ -1,0 +1,14 @@
+core: 8.x
+type: theme
+
+name: 'Lejlighed'
+description: 'Uses the Bootstrap framework'
+package: 'Yde'
+
+regions:
+  header: 'Header'
+  subheader: 'Subheader'
+  content: 'Content'
+
+libraries:
+  - 'lejlighed/global-styling'
