@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fad1e146e2a09eebc90f082303f9c576",
+    "content-hash": "63abc30a6bbe49da5bc9cce98b8773a8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1328,48 +1328,6 @@
             }
         },
         {
-            "name": "drupal/awesome_zymphonies_theme",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/awesome_zymphonies_theme",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/awesome_zymphonies_theme-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "cd3783d0150e3f4315345955cdd50481ce9c9e7a"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1457721840"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "zymphonies.com",
-                    "homepage": "https://www.drupal.org/user/2280310"
-                }
-            ],
-            "homepage": "https://www.drupal.org/project/awesome_zymphonies_theme",
-            "support": {
-                "source": "http://cgit.drupalcode.org/awesome_zymphonies_theme"
-            }
-        },
-        {
             "name": "drupal/bootstrap",
             "version": "3.5.0",
             "source": {
@@ -1393,7 +1351,11 @@
                 },
                 "drupal": {
                     "version": "8.x-3.5",
-                    "datestamp": "1495040301"
+                    "datestamp": "1495040301",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1446,6 +1408,9 @@
                 "drupal": {
                     "version": "8.x-1.x-dev",
                     "datestamp": "1496389743"
+                },
+                "patches_applied": {
+                    "Undefined index fix": "https://www.drupal.org/files/issues/calendar-steps_towards_handling_end_dates-2699477-36.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1949,6 +1914,11 @@
                 "symfony/css-selector": "~2.8"
             },
             "type": "drupal-core",
+            "extra": {
+                "patches_applied": {
+                    "Calendar core fix": "https://www.drupal.org/files/issues/0001-Issue-2786577-Improve-the-Views-integration-for-Date_3.patch"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Drupal\\Core\\": "lib/Drupal/Core",
@@ -2043,7 +2013,11 @@
                 },
                 "drupal": {
                     "version": "8.x-0.2",
-                    "datestamp": "1452746339"
+                    "datestamp": "1452746339",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2051,10 +2025,6 @@
                 "GPL-2.0+"
             ],
             "authors": [
-                {
-                    "name": "DoHa",
-                    "homepage": "https://www.drupal.org/user/1918338"
-                },
                 {
                     "name": "HaiNN",
                     "homepage": "https://www.drupal.org/user/1229130"
