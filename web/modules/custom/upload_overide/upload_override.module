@@ -2,6 +2,7 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * Implements hook_entity_presave().
@@ -57,11 +58,13 @@ function upload_override_entity_update(EntityInterface $entity) {
             // Loop the file's referencing entities
             foreach ($references as $field_name => $field_references) {
               foreach ($field_references as $entity_type => $type_references) {
-                foreach ($type_references as $id => $reference) {
+                foreach ($type_references as $nid => $reference) {
 
                   // IF THIS FILE IS REFERENCED BY AN ENTITY OTHER THAN THE ONE WE ARE EDITING - DON'T OVERWRITE
-                  if ($id != $entity->id()) {
-                    $node = Node::load($id);
+
+                  $node_reference = $reference->getFields()[$field_name]->getValue()['0']['target_id'];
+                  if ($id != $node_reference) {
+                    $node = Node::load($nid);
                     $url = $node->toUrl()->toString();
                     $path = file_url_transform_relative(file_create_url($file_old_uri));
                     $overwrite = FALSE;
@@ -93,6 +96,8 @@ function upload_override_entity_update(EntityInterface $entity) {
               $query_entity->delete(); // delete the temporary files
             }
           }
+
+          ImageStyle::load('thumbnail')->flush();
         }
       }
 

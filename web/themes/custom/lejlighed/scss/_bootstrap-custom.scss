@@ -88,3 +88,12 @@ $nav-link-padding-y:        .8rem;
 .page-item {
   padding: 0 20px;
 }
+
+.flag {
+  float: right;
+
+  &--item {
+    width: 1.5em;
+    margin: .3em;
+  }
+}

@@ -39,11 +39,11 @@
       <h2{{ heading.attributes }}>{{ heading.text }}</h2>
     {%- endif -%}
   {%- endif -%}
-  <ul{{ attributes.addClass('nav') }}>
+  <ul{{ attributes.addClass('nav flag') }}>
     {%- for item in links -%}
       <li{{ item.attributes.addClass('nav-item') }}>
         {%- if item.link -%}
-          <a href="{{ path('<current>', {}, {'language': item.link['#options']['language']}) }}">{{ item.link['#title'] }}</a>
+          <a href="{{ path('<current>', {}, {'language': item.link['#options']['language']}) }}"><img class="flag--item" src="{{ theme_path }}/icons/{{ item.link['#title'] }}-flag.png"></a>
         {%- elseif item.text_attributes -%}
           <span{{ item.text_attributes }}>{{ item.text }}</span>
         {%- else -%}
